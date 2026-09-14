@@ -67,10 +67,9 @@ int main(){
 
     int lim= 20;
 
-    int max= 99;
     string nombres[lim];
     int edades[lim];
-    int camisetas[max];
+    int camisetas[lim];
 
     do
     {
@@ -121,7 +120,7 @@ int main(){
             break;
         }
 
-    } while (opcion != 6);
+    } while (opcion != 7);
 
     return 0;
 
@@ -133,12 +132,12 @@ void Registro(string nombres[], int edades[], int camisetas[], int &cantidad){
     cout << "Ingrese cantidad de estudiantes: ";
     cin >> n;
 
-    int lim= 20;
+    const int lim= 20;
     cantidad= 0;
 
-    if (cantidad > lim)
+    if (cantidad + n > lim)
     {
-        cout << "Límite de estudiantes alcanzado.";
+        cout << "Límite de estudiantes alcanzado." << endl;
         return;
     }
 
@@ -162,10 +161,24 @@ void Registro(string nombres[], int edades[], int camisetas[], int &cantidad){
                 
         } while (edades[r] < 15 || edades[r] > 17);
 
-        cout << "Número de camiseta: ";
+        cout << "Número de camiseta (1 - 99): ";
         cin >> camisetas[r];
-    }
 
+        do
+        {
+            cout << "Número de camiseta (1 - 99): ";
+            cin >> camisetas[r];
+
+            if (camisetas[r] < 1 || camisetas[r] > 99)
+            {
+                cout << "Debe ser entre 1 y 99:";
+
+            }
+            
+
+        } while (camisetas[r] < 1 || camisetas[r] > 99);
+        
+    }
     cantidad= cantidad + n;
 
 }
