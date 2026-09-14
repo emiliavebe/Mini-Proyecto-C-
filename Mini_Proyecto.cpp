@@ -2,7 +2,7 @@
 
 MINI PROYECTO
 
-TEMA: 
+TEMA: Gestión de logística deportiva.
 
 FECHA: 12/09/2026
 
@@ -50,11 +50,11 @@ using namespace std;
 //PROTOTIPADO
 
 void Registro(string nombres[], int edades[], int camisetas[], int &cantidad);
-double GastosViaje(double &costAlimentacion, double &costHosp, double &costTransp, int &dias);
+void GastosViaje(double &costAlimentacion, double &costHosp, double &costTransp, int &dias);
 void PrecioPorEstudiante(double costAlimentacion, double costHosp, double costTransp, int dias, int cantidad);
 void ReporteGeneral(string nombres[], int edades[], int camisetas[], int cantidad, double costAlimentacion, double costHosp, double costTransp, int dias);
 void BuscarEstudiante(string nombres[], int edades[], int camisetas[], int cantidad);
-
+void ClasificacionPorEdad(int edades[], int cantidad);
 
 int main(){
 
@@ -73,14 +73,15 @@ int main(){
 
     do
     {
-        cout << "====MENU====" << endl;
+        cout << "====MENÚ====" << endl;
         cout << "1. Registro de estudiantes." << endl;
         cout << "2. Gastos de viaje." << endl;
         cout << "3. Precio por estudiante." << endl;
         cout << "4. Reporte general." << endl;
         cout << "5. Buscar a un estudiante." << endl;
-        cout << "6. Salir." << endl;
-        cout << "Selecciona una opcion: ";
+        cout << "6. Clasificación por edad." << endl;
+        cout << "7. Salir." << endl;
+        cout << "Selecciona una opción: ";
         cin >> opcion;
 
         switch (opcion)
@@ -104,14 +105,18 @@ int main(){
         case 5:
             BuscarEstudiante(nombres, edades, camisetas, cantidad);
             break;
-            
+
         case 6:
+            ClasificacionPorEdad(edades, cantidad);
+            break;
+            
+        case 7:
             cout << "Saliendo del programa..." << endl;
             break;    
 
         default:
 
-        cout << "Opcion invalida" << endl;
+        cout << "Opcion inválida" << endl;
             break;
         }
 
@@ -131,7 +136,7 @@ void Registro(string nombres[], int edades[], int camisetas[], int &cantidad){
 
     if (cantidad > lim)
     {
-        cout << "Limite de estudiantes alcanzado.";
+        cout << "Límite de estudiantes alcanzado.";
         return;
     }
 
@@ -150,12 +155,12 @@ void Registro(string nombres[], int edades[], int camisetas[], int &cantidad){
 
             if (edades[i] < 15 || edades[i] > 17)
             {
-                cout << "Edad invalida.";
+                cout << "Edad inválida.";
             }
                 
         } while (edades[i] < 15 || edades[i] > 17);
 
-        cout << "Numero de camiseta: ";
+        cout << "Número de camiseta: ";
         cin >> camisetas[r];
     }
 
@@ -164,7 +169,7 @@ void Registro(string nombres[], int edades[], int camisetas[], int &cantidad){
 }
 
 
-double GastosViaje(double &costAlimentacion, double &costHosp, double &costTransp, int &dias){
+void GastosViaje(double &costAlimentacion, double &costHosp, double &costTransp, int &dias){
 
     cout << "Días de viaje: "; cin >> dias;
     cout << "Costo diario alimentación: "; cin >> costAlimentacion;
@@ -179,6 +184,7 @@ void PrecioPorEstudiante(double costAlimentacion, double costHosp, double costTr
     {
         cout << "No hay estudiantes registrados.";
         return;
+
     }
     double DiarioPorapersona= costAlimentacion + costHosp;
     double Costo_total= (DiarioPorapersona * dias * cantidad) + costTransp;
@@ -200,6 +206,33 @@ void ReporteGeneral(string nombres[], int edades[], int camisetas[], int cantida
     cout << "Cada estudiante paga:  $" << PrecioPorEstudiante << endl;
 }
 
+void ClasificacionPorEdad(int edades[], int cantidad){
+
+    if (cantidad == 0)
+    {
+        cout << "No hay estudiantes registrados.";
+        return;
+    }
+
+    int e15= 0, e16= 0, e17= 0;
+
+    for (int i = 0; i < cantidad; i++)
+    {
+        if (edades [i] == 15){e15++;}
+        else if (edades[i] == 16) {e16++;} 
+        else if (edades[i] == 17) {e17++;}
+    }
+
+    cout << "Total de estudiantes: " << cantidad << endl;
+
+    cout << "Clasificación por edad:";
+    cout << endl;
+    cout << "15 años: " << e15 << " estudiantes" << endl;
+    cout << "16 años: " << e16 << " estudiantes" << endl;
+    cout << "17 años: " << e17 << " estudiantes" << endl;
+
+}
+
 void BuscarEstudiante(string nombres[], int edades[], int camisetas[], int cantidad){
 
     if (cantidad == 0)
@@ -209,7 +242,7 @@ void BuscarEstudiante(string nombres[], int edades[], int camisetas[], int canti
     }
     
     int buscar;
-    cout << "Numero de camiseta a buscar: ";
+    cout << "Número de camiseta a buscar: ";
     cin >> buscar;
 
     bool encontrado = false;
@@ -219,7 +252,7 @@ void BuscarEstudiante(string nombres[], int edades[], int camisetas[], int canti
         {
             cout << "Estudiante encontrado:";
             cout << endl;
-            cout << "Posicion: " << i + 1 << endl;
+            cout << "Posición: " << i + 1 << endl;
             cout << "Nombre:       " << nombres[i] << endl;
             cout << "Edad: " << edades[i] << endl;
 
