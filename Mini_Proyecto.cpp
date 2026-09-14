@@ -23,10 +23,10 @@ ENTRADA: numero de estudiantes, nombres, edades, numero camiseta, dias.
 PROCESO: Mostrar un menu con las siguientes opciones:
 
            - Registro de estudiantes.
-           - Calcularcostos del viaje.
+           - Gastos del viaje.
            - Precio por estudiante.
            - Mostrar reporte general
-           - Busqueda de un estudiante.
+           - Buscar estudiantes.
            - Salir.
 
          Seleccionar una opcion.
@@ -61,13 +61,25 @@ int main(){
     do
     {
         cout << "====MENU====" << endl;
-        cout << "1. Registro de jugadores." << endl;
+        cout << "1. Registro de estudiantes." << endl;
         cout << "2. Gastos de viaje." << endl;
         cout << "3. Precio por estudiante." << endl;
         cout << "4. Reporte general." << endl;
-        cout << "5. Busqueda de estudiantes." << endl;
+        cout << "5. Buscar estudiantes." << endl;
         cout << "6. Salir." << endl;
         cout << "Selecciona una opcion: ";
+
+        switch (opcion)
+        {
+        case 1:
+            cout << "Ingrese numero de estudiantes: ";
+            cin >> cantidad;
+            
+            break;
+        
+        default:
+            break;
+        }
 
     } while (opcion != 6);
 
