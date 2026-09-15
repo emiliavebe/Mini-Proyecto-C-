@@ -13,7 +13,7 @@ ENUNCIADO: Una escuela de fútbol necesita un programa para administrar a sus es
            y número de camiseta (1–99). Además, debe calcular los costos del viaje considerando: 
            costo diario de alimentación, hospedaje y transporte. El programa calculará el costo 
            total del viaje y el precio por estudiante. Debe permitir buscar un estudiante por 
-           su número de camiseta, mostrando su nombrey edad y la posicion e n la que fue encontrado. 
+           su numero de camiseta, motrando su nombre, edad y posicion  en la que fue encontrado. 
            Todo esto mediante un menú interactivo hasta que el usuario escoga la opcio salir.
 
 E/P/S
